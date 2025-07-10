@@ -1,32 +1,115 @@
-<div class="malla-grid">
-  <div class="semestre">
-    <h2>1° Semestre</h2>
-    <div class="ramo" id="fundamentos1" onclick="aprobar('fundamentos1')">Fundamentos de Enfermería I</div>
-    <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
-    <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
-    <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
-    <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
-    <div class="ramo" id="esi" onclick="aprobar('esi')">Educación en Salud I</div>
-    <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Cs. Sociales y Salud I</div>
-    <div class="ramo" id="cfg" onclick="aprobar('cfg')">Curso de Formación General I</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva Obstetricia UChile</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Malla Interactiva - Obstetricia y Puericultura UChile</h1>
+  <div class="malla-grid">
+    <!-- Semestres 1 al 10 -->
+    <div class="semestre" id="sem1">
+      <h2>1° Semestre</h2>
+      <div class="ramo" id="fundamentos1" onclick="aprobar('fundamentos1')">Fundamentos de Enfermería I</div>
+      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
+      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
+      <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
+      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
+      <div class="ramo" id="educacion1" onclick="aprobar('educacion1')">Educación en Salud I</div>
+      <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Cs. Sociales y Salud I</div>
+      <div class="ramo" id="cfg1" onclick="aprobar('cfg1')">Curso de Formación General I</div>
+      <div class="ramo" id="ingles1" onclick="aprobar('ingles1')">Inglés I</div>
+    </div>
+    <div class="semestre" id="sem2">
+      <h2>2° Semestre</h2>
+      <div class="ramo bloqueado" id="saludcom1">Salud Comunitaria I</div>
+      <div class="ramo bloqueado" id="bioquimica">Bioquímica</div>
+      <div class="ramo bloqueado" id="biodesarrollo">Biología del Desarrollo y Embriología Humana</div>
+      <div class="ramo bloqueado" id="fisiologia">Fisiología General</div>
+      <div class="ramo bloqueado" id="anatomia">Anatomía</div>
+      <div class="ramo bloqueado" id="histologia">Histología</div>
+      <div class="ramo bloqueado" id="integracion1">Integración al Desempeño Profesional I</div>
+      <div class="ramo bloqueado" id="cfg2">Curso de Formación General II</div>
+      <div class="ramo bloqueado" id="ingles2">Inglés II</div>
+    </div>
+    <div class="semestre" id="sem3">
+      <h2>3° Semestre</h2>
+      <div class="ramo bloqueado" id="fundamentos2">Fundamentos de Enfermería II</div>
+      <div class="ramo bloqueado" id="obstetricia1">Obstetricia Fisiológica I</div>
+      <div class="ramo bloqueado" id="neonatologia1">Neonatología I</div>
+      <div class="ramo bloqueado" id="fisiologia_sis">Fisiología de Sistemas</div>
+      <div class="ramo bloqueado" id="inmunologia">Inmunología</div>
+      <div class="ramo bloqueado" id="agentes">Agentes Vivos de Enfermedad</div>
+      <div class="ramo bloqueado" id="cs_sociales2">Cs. Sociales y Salud II</div>
+      <div class="ramo bloqueado" id="ingles3">Inglés III</div>
+    </div>
+    <div class="semestre" id="sem4">
+      <h2>4° Semestre</h2>
+      <div class="ramo bloqueado" id="neonatologia2">Neonatología II</div>
+      <div class="ramo bloqueado" id="obstetricia2">Obstetricia Fisiológica II</div>
+      <div class="ramo bloqueado" id="gineco1">Ginecología Fisiológica</div>
+      <div class="ramo bloqueado" id="fisiopato">Fisiopatología</div>
+      <div class="ramo bloqueado" id="infectologia">Infectología</div>
+      <div class="ramo bloqueado" id="farmacologia">Farmacología</div>
+      <div class="ramo bloqueado" id="integracion2">Integración al Desempeño Profesional II</div>
+      <div class="ramo bloqueado" id="investigacion1">Investigación en Salud I</div>
+    </div>
+    <div class="semestre" id="sem5">
+      <h2>5° Semestre</h2>
+      <div class="ramo bloqueado" id="clinica_neonatal1">Clínica Neonatal I</div>
+      <div class="ramo bloqueado" id="clinica_partos1">Clínica de Partos I</div>
+      <div class="ramo bloqueado" id="clinica_ap1">Clínica de Atención Primaria I</div>
+      <div class="ramo bloqueado" id="clinica_puerperio">Clínica de Puerperio</div>
+      <div class="ramo bloqueado" id="clinica_saludcom">Clínica de Salud Comunitaria</div>
+      <div class="ramo bloqueado" id="modulo1">Módulo Interdisciplinario I</div>
+    </div>
+    <div class="semestre" id="sem6">
+      <h2>6° Semestre</h2>
+      <div class="ramo bloqueado" id="neonatologia3">Neonatología III</div>
+      <div class="ramo bloqueado" id="saludcom2">Salud Comunitaria II</div>
+      <div class="ramo bloqueado" id="obstetricia_pat">Obstetricia Patológica</div>
+      <div class="ramo bloqueado" id="gestion1">Gestión y Liderazgo en Salud I</div>
+      <div class="ramo bloqueado" id="educacion2">Educación en Salud II</div>
+      <div class="ramo bloqueado" id="investigacion2">Investigación en Salud II</div>
+      <div class="ramo bloqueado" id="cs_sociales3">Cs. Sociales y Salud III</div>
+      <div class="ramo bloqueado" id="cfg3">Curso de Formación General III</div>
+    </div>
+    <div class="semestre" id="sem7">
+      <h2>7° Semestre</h2>
+      <div class="ramo bloqueado" id="enfermeria_mq">Enfermería Médico Quirúrgica</div>
+      <div class="ramo bloqueado" id="reproduccion">Reproducción Humana</div>
+      <div class="ramo bloqueado" id="gineco_pat">Ginecología Patológica</div>
+      <div class="ramo bloqueado" id="gestion2">Gestión y Liderazgo en Salud II</div>
+      <div class="ramo bloqueado" id="investigacion3">Investigación en Salud III</div>
+      <div class="ramo bloqueado" id="cs_sociales4">Cs. Sociales y Salud IV</div>
+      <div class="ramo bloqueado" id="cfg4">Curso de Formación General IV</div>
+      <div class="ramo bloqueado" id="ingles4">Inglés IV</div>
+    </div>
+    <div class="semestre" id="sem8">
+      <h2>8° Semestre</h2>
+      <div class="ramo bloqueado" id="clinica_neonatal2">Clínica Neonatal II</div>
+      <div class="ramo bloqueado" id="clinica_partos2">Clínica de Partos II</div>
+      <div class="ramo bloqueado" id="clinica_ap2">Clínica Atención Primaria II</div>
+      <div class="ramo bloqueado" id="alto_riesgo">Clínica Alto Riesgo Obstétrico</div>
+      <div class="ramo bloqueado" id="clinica_mq">Clínica de Enfermería MQ</div>
+      <div class="ramo bloqueado" id="modulo2">Módulo Interdisciplinario II</div>
+      <div class="ramo bloqueado" id="seminario1">Seminario Unidad Investigación I</div>
+    </div>
+    <div class="semestre" id="sem9">
+      <h2>9° Semestre</h2>
+      <div class="ramo bloqueado" id="internado_neonatologia">Internado Neonatología</div>
+      <div class="ramo bloqueado" id="internado_obstetricia">Internado Obstetricia</div>
+      <div class="ramo bloqueado" id="internado_ap">Internado Atención Primaria</div>
+      <div class="ramo bloqueado" id="internado_gineco">Internado Ginecología</div>
+      <div class="ramo bloqueado" id="internado_electivo">Internado Electivo</div>
+    </div>
+    <div class="semestre" id="sem10">
+      <h2>10° Semestre</h2>
+      <div class="ramo bloqueado" id="seminario2">Seminario Unidad Investigación II</div>
+    </div>
   </div>
-
-  <div class="semestre">
-    <h2>2° Semestre</h2>
-    <div class="ramo bloqueado" id="anatomia">Anatomía</div>
-    <div class="ramo bloqueado" id="histologia">Histología</div>
-    <div class="ramo bloqueado" id="bioquimica">Bioquímica</div>
-    <div class="ramo bloqueado" id="cs_sociales2">Cs. Sociales y Salud II</div>
-    <div class="ramo bloqueado" id="investigacion1">Investigación en Salud I</div>
-    <div class="ramo bloqueado" id="idp">Integración al Desempeño I</div>
-    <div class="ramo bloqueado" id="fisiologia">Fisiología General</div>
-    <div class="ramo bloqueado" id="embrio">Biología del Desarrollo</div>
-  </div>
-
-  <div class="semestre">
-    <h2>3° Semestre</h2>
-    <!-- Aquí irán los ramos del 3° -->
-  </div>
-
-  <!-- Agrega más semestres igual -->
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
