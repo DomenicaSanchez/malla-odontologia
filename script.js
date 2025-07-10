@@ -7,6 +7,7 @@ const prerequisitos = {
   'histologia': ['biologia'],
   'investigacion1': ['mate', 'fisica'],
   'educacion2': ['educacion1'],
+  'inmunologia': ['fisiologia'],
   'cs_sociales2': ['cs_sociales1'],
   'ingles2': ['ingles1'],
   'saludcom1': [],
@@ -53,10 +54,7 @@ const prerequisitos = {
   'internado_ap': ['clinica_ap2'],
   'internado_gineco': ['clinica_mq'],
   'internado_electivo': [],
-  'seminario2': ['seminario1'],
-  
-  // inmunologia sin prerrequisito
-  'inmunologia': []
+  'seminario2': ['seminario1']
 };
 
 function actualizarDesbloqueos() {
@@ -83,11 +81,9 @@ function aprobar(e) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Agregar event listeners a todos los ramos
   const todosRamos = document.querySelectorAll('.ramo');
   todosRamos.forEach(ramo => {
     ramo.addEventListener('click', aprobar);
   });
   actualizarDesbloqueos();
 });
-
