@@ -1,3 +1,4 @@
+// Mapeo de prerrequisitos: cada ramo apunta a los ID que debe tener aprobados
 const prerequisitos = {
   'integracion1': ['fundamentos1'],
   'bioquimica': ['quimica', 'biologia'],
@@ -56,14 +57,18 @@ const prerequisitos = {
   'seminario2': ['seminario1']
 };
 
-function actualizarDesbloqueos() {
+function aprobar(id) {
+  const ramo = document.getElementById(id);
+  if (ramo.classList.contains('bloqueado')) return;
+  ramo.classList.toggle('aprobado');
+
   const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
-    const elem = document.getElementById(destino);
-    if (!elem) continue;
-
     const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+    const elem = document.getElementById(destino);
     if (!elem.classList.contains('aprobado')) {
-      if (puedeDesbloquear) {
-        elem.classList.remove('bloqueado');
-      } el
+      if (puedeDesbloquear) elem.classList.remove('bloqueado');
+      else elem.classList.add('bloqueado');
+    }
+  }
+} 
