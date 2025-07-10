@@ -74,3 +74,4 @@ function aprobar(id) {
     }
   }
 }
+<script src="script.js"></script>
