@@ -25,7 +25,7 @@ const prerequisitos = {
   'fisiopato': ['fisiologia_sis'],
   'infectologia': ['agentes'],
   'farmacologia': ['fisiologia_sis', 'bioquimica'],
-  'integracion2': ['fisiologia_sis'],
+  'integracion2': ['fisiologia_sis','fundamentos2'],
   'clinica_neonatal1': ['neonatologia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
   'clinica_partos1': ['obstetricia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
   'clinica_ap1': ['obstetricia2', 'gineco1', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
