@@ -57,15 +57,11 @@ const prerequisitos = {
   'seminario2': ['seminario1']
 };
 
-const prerequisitos = {
-  // tu objeto prerequisitos completo aquí...
-  // lo omití para abreviar, pero lo usas tal cual
-};
-
 function actualizarDesbloqueos() {
   const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
     const elem = document.getElementById(destino);
+    if (!elem) continue;
     const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
@@ -75,15 +71,16 @@ function actualizarDesbloqueos() {
 }
 
 function aprobar(id) {
-  // Actualizar desbloqueos ANTES de validar el clic
   actualizarDesbloqueos();
 
   const ramo = document.getElementById(id);
-  if (ramo.classList.contains('bloqueado')) return; // ya chequeado después de actualizar
+  if (ramo.classList.contains('bloqueado')) return;
 
-  // Alternar aprobado
   ramo.classList.toggle('aprobado');
 
-  // Actualizar desbloqueos después de cambiar estado
   actualizarDesbloqueos();
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  actualizarDesbloqueos();
+});
