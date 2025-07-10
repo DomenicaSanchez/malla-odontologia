@@ -1,5 +1,5 @@
-// Mapeo de prerrequisitos: cada ramo apunta a los ID que debe tener aprobados
 const prerequisitos = {
+  // tu objeto prerrequisitos completo
   'integracion1': ['fundamentos1'],
   'bioquimica': ['quimica', 'biologia'],
   'anatomia': ['biologia'],
@@ -66,13 +66,14 @@ function actualizarDesbloqueos() {
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
       else elem.classList.add('bloqueado');
+    } else {
+      // Si está aprobado debe quedar desbloqueado siempre
+      elem.classList.remove('bloqueado');
     }
   }
 }
 
 function aprobar(id) {
-  actualizarDesbloqueos();
-
   const ramo = document.getElementById(id);
   if (ramo.classList.contains('bloqueado')) return;
 
