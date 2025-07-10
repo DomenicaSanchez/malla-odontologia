@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Malla Interactiva Obstetricia UChile</title>
-  <link rel="stylesheet" href="estilos.css" />
-</head>
-<body>
-  <h1>Malla de Estudios - Obstetricia y Puericultura UChile</h1>
+<div class="malla-grid">
   <div class="semestre">
-    <h2>1º Semestre</h2>
-    <div class="malla">
-      <div class="ramo" id="fundamentos1" onclick="aprobar('fundamentos')">Fundamentos de Enfermería I</div>
-      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
-      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
-      <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
-      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
-      <div class="ramo" id="ed_salud1" onclick="aprobar('ed_salud1')">Educación en Salud I</div>
-      <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Ciencias Sociales y Salud I</div>
-      <div class="ramo" id="cfg" onclick="aprobar('cfg')">Curso de formación general I</div>
-      <div class="ramo" id="ingles" onclick="aprobar('ingles')">Inglés I</div>
-    </div>
+    <h2>1° Semestre</h2>
+    <div class="ramo" id="fundamentos1" onclick="aprobar('fundamentos1')">Fundamentos de Enfermería I</div>
+    <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
+    <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
+    <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
+    <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
+    <div class="ramo" id="esi" onclick="aprobar('esi')">Educación en Salud I</div>
+    <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Cs. Sociales y Salud I</div>
+    <div class="ramo" id="cfg" onclick="aprobar('cfg')">Curso de Formación General I</div>
   </div>
+
   <div class="semestre">
-    <h2>2º Semestre</h2>
-    <div class="malla">
-      <div class="ramo" id="scom1" onclick="aprobar('scom1')">Salud Comunitaria I</div>
-      <div class="ramo bloqueado" id="bioquimica">Bioquímica</div>
-      <div class="ramo bloqueado" id="embrio">Biología del Desarrollo y Embriología Humana</div>
-      <div class="ramo bloqueado" id="fisio">Fisiología General</div>
-      <div class="ramo bloqueado" id="anatomia">Anatomía</div>
-      <div class="ramo bloqueado" id="histologia">Histología</div>
-      <div class="ramo bloqueado" id="idp1">Integración al Desempeño Profesional I</div>
-      <div class="ramo" id="cfg" onclick="aprobar('cfg2')">Curso de formación general II</div>
-      <div class="ramo bloqueado" id="ingles2">Inglés II</div>
-    </div>
+    <h2>2° Semestre</h2>
+    <div class="ramo bloqueado" id="anatomia">Anatomía</div>
+    <div class="ramo bloqueado" id="histologia">Histología</div>
+    <div class="ramo bloqueado" id="bioquimica">Bioquímica</div>
+    <div class="ramo bloqueado" id="cs_sociales2">Cs. Sociales y Salud II</div>
+    <div class="ramo bloqueado" id="investigacion1">Investigación en Salud I</div>
+    <div class="ramo bloqueado" id="idp">Integración al Desempeño I</div>
+    <div class="ramo bloqueado" id="fisiologia">Fisiología General</div>
+    <div class="ramo bloqueado" id="embrio">Biología del Desarrollo</div>
   </div>
+
   <div class="semestre">
-    <h2>3º Semestre</h2>
-   
-  <script src="script.js"></script>
-</body>
-</html>
+    <h2>3° Semestre</h2>
+    <!-- Aquí irán los ramos del 3° -->
+  </div>
+
+  <!-- Agrega más semestres igual -->
+</div>
