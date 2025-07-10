@@ -53,7 +53,10 @@ const prerequisitos = {
   'internado_ap': ['clinica_ap2'],
   'internado_gineco': ['clinica_mq'],
   'internado_electivo': [],
-  'seminario2': ['seminario1']
+  'seminario2': ['seminario1'],
+  
+  // inmunologia sin prerrequisito
+  'inmunologia': []
 };
 
 function actualizarDesbloqueos() {
@@ -87,3 +90,4 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   actualizarDesbloqueos();
 });
+
