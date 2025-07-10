@@ -36,9 +36,56 @@ const prerequisitos = {
   'obstetricia_pat': ['obstetricia2', 'farmacologia', 'fisiopato'],
   'gestion1': ['investigacion1'],
   'investigacion2': ['investigacion1'],
-  'enf
+  'enfermeria_mq': ['neonatologia3', 'obstetricia_pat'],
+  'reproduccion': ['fisiologia_sis'],
+  'gineco_pat': ['clinica_ap1'],
+  'gestion2': ['gestion1'],
+  'investigacion3': ['investigacion2'],
+  'cs_sociales4': ['cs_sociales3'],
+  'clinica_neonatal2': ['neonatologia3', 'enfermeria_mq'],
+  'clinica_partos2': ['obstetricia_pat', 'enfermeria_mq'],
+  'clinica_ap2': ['obstetricia_pat', 'gineco_pat', 'saludcom2'],
+  'alto_riesgo': ['obstetricia_pat', 'enfermeria_mq'],
+  'clinica_mq': ['gineco_pat', 'enfermeria_mq'],
+  'modulo2': ['modulo1'],
+  'seminario1': ['investigacion3'],
+  'internado_neonatologia': ['clinica_neonatal2'],
+  'internado_obstetricia': ['clinica_partos2', 'alto_riesgo'],
+  'internado_ap': ['clinica_ap2'],
+  'internado_gineco': ['clinica_mq'],
+  'internado_electivo': [],
+  'seminario2': ['seminario1']
+};
 
-      else elem.classList.add('bloqueado');
+// Esta función actualiza el estado de desbloqueo según los ramos aprobados
+function actualizarDesbloqueos() {
+  const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
+
+  for (const [destino, reqs] of Object.entries(prerequisitos)) {
+    const elem = document.getElementById(destino);
+    if (!elem) continue;
+
+    const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+    if (!elem.classList.contains('aprobado')) {
+      if (puedeDesbloquear) {
+        elem.classList.remove('bloqueado');
+      } else {
+        elem.classList.add('bloqueado');
+      }
     }
   }
 }
+
+// Al hacer clic en un ramo
+function aprobar(id) {
+  const ramo = document.getElementById(id);
+  if (ramo.classList.contains('bloqueado')) return;
+
+  ramo.classList.toggle('aprobado');
+  actualizarDesbloqueos(); // actualiza desbloqueos dinámicamente
+}
+
+// Al cargar la página, aplica el estado inicial (esto es clave)
+window.onload = () => {
+  actualizarDesbloqueos();
+};
