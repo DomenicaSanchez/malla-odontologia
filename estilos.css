@@ -1,31 +1,30 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background-color: white;
+  margin: 0;
   padding: 20px;
 }
+
 h1 {
   text-align: center;
-}
-.semestre {
   margin-bottom: 40px;
+  color: #00457C;
 }
-.malla {
+
+.malla-grid {
   display: flex;
+  gap: 40px;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
 }
-.ramo {
-  padding: 15px;
-  background: #4CAF50;
-  color: white;
+
+.semestre {
+  border: 1px solid #ccc;
+  padding: 20px;
   border-radius: 8px;
-  cursor: pointer;
-  min-width: 200px;
-  text-align: center;
-  transition: 0.3s;
-}
-.ramo.bloqueado {
-  background: gray;
-  cursor: not-allowed;
+  min-width: 280px;
+  background-color: #fdfdfd;
+  box-shadow:
+
   opacity: 0.6;
 }
