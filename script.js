@@ -25,7 +25,7 @@ const prerequisitos = {
   'fisiopato': ['fisiologia_sis'],
   'infectologia': ['agentes'],
   'farmacologia': ['fisiologia_sis', 'bioquimica'],
-  'integracion2': ['fisiologia_sis','fundamentos2'],
+  'integracion2': ['fisiologia_sis', 'fundamentos2'],
   'clinica_neonatal1': ['neonatologia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
   'clinica_partos1': ['obstetricia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
   'clinica_ap1': ['obstetricia2', 'gineco1', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
@@ -58,20 +58,29 @@ const prerequisitos = {
   'seminario2': ['seminario1']
 };
 
+// Función para aprobar (o desaprobar) un ramo
 function aprobar(id) {
   const ramo = document.getElementById(id);
-  if (ramo.classList.contains('bloqueado')) return; // no puedes aprobar un ramo bloqueado
+  if (ramo.classList.contains('bloqueado')) return; // No puedes aprobar un ramo bloqueado
+
   ramo.classList.toggle('aprobado');
 
+  actualizarDesbloqueos();
+}
+
+// Función para actualizar qué ramos se desbloquean
+function actualizarDesbloqueos() {
   const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
-  for (const [destino, reqs] of Object.entries(prerequisitos)) {
-    const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
-    const elem = document.getElementById(destino);
-    if (!elem) continue;  // Protege de que el elemento no exista
-    if (!elem.classList.contains('aprobado')) {
-      if (puedeDesbloquear) elem.classList.remove('bloqueado');
-      else elem.classList.add('bloqueado');
+
+  for (const [ramoID, requisitos] of Object.entries(prerequisitos)) {
+    const puedeDesbloquear = requisitos.every(r => aprobados.includes(r));
+    const ramo = document.getElementById(ramoID);
+    if (!ramo || ramo.classList.contains('aprobado')) continue;
+
+    if (puedeDesbloquear) {
+      ramo.classList.remove('bloqueado');
+    } else {
+      ramo.classList.add('bloqueado');
     }
   }
 }
-<script src="script.js"></script>
