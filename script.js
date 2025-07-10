@@ -1,4 +1,3 @@
-// Mapeo de prerrequisitos
 const prerequisitos = {
   'integracion1': ['fundamentos1'],
   'bioquimica': ['quimica', 'biologia'],
@@ -59,7 +58,6 @@ const prerequisitos = {
 
 function actualizarDesbloqueos() {
   const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
-
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
     const elem = document.getElementById(destino);
     if (!elem) continue;
@@ -68,27 +66,4 @@ function actualizarDesbloqueos() {
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) {
         elem.classList.remove('bloqueado');
-      } else {
-        elem.classList.add('bloqueado');
-      }
-    }
-  }
-}
-
-function aprobar(id) {
-  const ramo = document.getElementById(id);
-  if (ramo.classList.contains('bloqueado')) return;
-
-  ramo.classList.toggle('aprobado');
-  actualizarDesbloqueos();
-}
-
-window.onload = () => {
-  // Asignar eventos a TODOS los ramos
-  const todosLosRamos = document.querySelectorAll('[id]');
-  todosLosRamos.forEach(elem => {
-    elem.addEventListener('click', () => aprobar(elem.id));
-  });
-
-  actualizarDesbloqueos();
-};
+      } el
