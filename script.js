@@ -8,6 +8,7 @@ const prerequisitos = {
   'histologia': ['biologia'],
   'investigacion1': ['mate', 'fisica'],
   'educacion2': ['educacion1'],
+  'inmunologia': ['fisiologia'],
   'cs_sociales2': ['cs_sociales1'],
   'ingles2': ['ingles1'],
   'saludcom1': [],
