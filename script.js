@@ -1,7 +1,10 @@
 const requisitos = {
   anatomia: ['biologia'],
+  idp1: ['fundamentos1'],
   histologia: ['biologia'],
-  bioquimica: ['quimica'],
+  bioquimica: ['quimica', 'biologia'],
+  fisiologia: ['biologia'],
+  embrio: ['biologia'],
   cs_sociales2: ['cs_sociales1'],
   investigacion1: ['mate']
 };
