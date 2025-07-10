@@ -1,5 +1,4 @@
 const prerequisitos = {
-  // tu objeto prerrequisitos completo
   'integracion1': ['fundamentos1'],
   'bioquimica': ['quimica', 'biologia'],
   'anatomia': ['biologia'],
@@ -67,21 +66,24 @@ function actualizarDesbloqueos() {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
       else elem.classList.add('bloqueado');
     } else {
-      // Si está aprobado debe quedar desbloqueado siempre
+      // Un ramo aprobado no debe estar bloqueado
       elem.classList.remove('bloqueado');
     }
   }
 }
 
-function aprobar(id) {
-  const ramo = document.getElementById(id);
+function aprobar(e) {
+  const ramo = e.currentTarget;
   if (ramo.classList.contains('bloqueado')) return;
-
   ramo.classList.toggle('aprobado');
-
   actualizarDesbloqueos();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // Agregar event listeners a todos los ramos
+  const todosRamos = document.querySelectorAll('.ramo');
+  todosRamos.forEach(ramo => {
+    ramo.addEventListener('click', aprobar);
+  });
   actualizarDesbloqueos();
 });
