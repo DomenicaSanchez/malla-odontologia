@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Malla Interactiva Obstetricia UChile</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <h1>Malla de Estudios - Obstetricia y Puericultura UChile</h1>
+  <div class="semestre">
+    <h2>1º Semestre</h2>
+    <div class="malla">
+      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
+      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
+      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
+      <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
+      <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Ciencias Sociales y Salud I</div>
+    </div>
+  </div>
+  <div class="semestre">
+    <h2>2º Semestre</h2>
+    <div class="malla">
+      <div class="ramo bloqueado" id="anatomia">Anatomía</div>
+      <div class="ramo bloqueado" id="histologia">Histología</div>
+      <div class="ramo bloqueado" id="bioquimica">Bioquímica</div>
+      <div class="ramo bloqueado" id="cs_sociales2">Ciencias Sociales y Salud II</div>
+      <div class="ramo bloqueado" id="investigacion1">Investigación en Salud I</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
