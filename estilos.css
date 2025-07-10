@@ -13,8 +13,8 @@ h1 {
 
 .malla-grid {
   display: flex;
-  overflow-x: auto;
   gap: 30px;
+  overflow-x: auto;
   padding: 10px;
   justify-content: flex-start;
 }
