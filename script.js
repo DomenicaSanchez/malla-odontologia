@@ -55,7 +55,7 @@ const prerequisitos = {
   'internado_gineco': ['clinica_mq'],
   'internado_electivo': [],
   'seminario2': ['seminario1'],
-  'ingles4': ['ingles4']
+  'ingles4': ['ingles3']
 };
 
 function actualizarDesbloqueos() {
