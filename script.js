@@ -53,6 +53,10 @@ const prerequisitos = {
   'internado_obstetricia': ['clinica_partos2', 'alto_riesgo'],
   'internado_ap': ['clinica_ap2'],
   'internado_gineco': ['clinica_mq'],
+  'internado_neonatologia1': ['clinica_neonatal2'],
+  'internado_obstetricia1': ['clinica_partos2', 'alto_riesgo'],
+  'internado_ap1': ['clinica_ap2'],
+  'internado_gineco1': ['clinica_mq'],
   'internado_electivo': [],
   'seminario2': ['seminario1'],
   'ingles4': ['ingles3']
