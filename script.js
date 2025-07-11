@@ -58,6 +58,7 @@ const prerequisitos = {
   'internado_ap1': ['clinica_ap2'],
   'internado_gineco1': ['clinica_mq'],
   'internado_electivo': [],
+  'internado_electivo1': [],
   'seminario2': ['seminario1'],
   'ingles4': ['ingles3']
 };
