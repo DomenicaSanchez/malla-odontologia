@@ -1,3 +1,4 @@
+
 const prerequisitos = {
   'integracion1': ['fundamentos1'],
   'bioquimica': ['quimica', 'biologia'],
@@ -63,17 +64,36 @@ const prerequisitos = {
   'ingles4': ['ingles3']
 };
 
+function calcularCreditosAprobados() {
+  const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
+  return aprobados.reduce((sum, ramo) => sum + (creditos[ramo] || 0), 0);
+}
+
 function actualizarDesbloqueos() {
   const aprobados = Array.from(document.getElementsByClassName('aprobado')).map(r => r.id);
+  const totalCreditos = calcularCreditosAprobados();
+
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
     const elem = document.getElementById(destino);
     if (!elem) continue;
-    const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+
+    let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+
+    // Reglas especiales con créditos
+    if (destino === 'modulo1') {
+      puedeDesbloquear = totalCreditos >= 90;
+    }
+    if (destino === 'modulo2') {
+      puedeDesbloquear = aprobados.includes('modulo1') && totalCreditos >= 170;
+    }
+    if (destino === 'internado_electivo' || destino === 'internado_electivo1') {
+      puedeDesbloquear = totalCreditos >= 240;
+    }
+
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
       else elem.classList.add('bloqueado');
     } else {
-      // Un ramo aprobado no debe estar bloqueado
       elem.classList.remove('bloqueado');
     }
   }
