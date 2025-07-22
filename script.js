@@ -1,141 +1,66 @@
-// Créditos oficiales de cada ramo
-const creditos = {
-  'fundamentos1': 3,
-  'quimica': 3,
-  'biologia': 6,
-  'mate': 2,
-  'fisica': 2,
-  'educacion1': 4,
-  'cs_sociales1': 6,
-  'cfg1': 2,
-  'ingles1': 3,
-  'saludcom1': 4,
-  'bioquimica': 3,
-  'biodesarrollo': 4,
-  'fisiologia': 4,
-  'anatomia': 5,
-  'histologia': 3,
-  'integracion1': 2,
-  'cfg2': 2,
-  'ingles2': 3,
-  'fundamentos2': 4,
-  'obstetricia1': 4,
-  'neonatologia1': 4,
-  'fisiologia_sis': 5,
-  'inmunologia': 3,
-  'agentes': 3,
-  'cs_sociales2': 5,
-  'ingles3': 3,
-  'neonatologia2': 3,
-  'obstetricia2': 3,
-  'gineco1': 5,
-  'fisiopato': 5,
-  'infectologia': 3,
-  'farmacologia': 4,
-  'integracion2': 3,
-  'investigacion1': 3,
-  'clinica_neonatal1': 5,
-  'clinica_partos1': 5,
-  'clinica_ap1': 5,
-  'clinica_puerperio': 5,
-  'clinica_saludcom': 4,
-  'modulo1': 4,
-  'neonatologia3': 4,
-  'saludcom2': 6,
-  'obstetricia_pat': 4,
-  'gestion1': 4,
-  'educacion2': 3,
-  'investigacion2': 5,
-  'cs_sociales3': 4,
-  'cfg3': 2,
-  'enfermeria_mq': 6,
-  'reproduccion': 2,
-  'gineco_pat': 5,
-  'gestion2': 5,
-  'investigacion3': 6,
-  'cs_sociales4': 4,
-  'clinica_neonatal2': 5,
-  'clinica_partos2': 4,
-  'clinica_ap2': 5,
-  'alto_riesgo': 4,
-  'clinica_mq': 4,
-  'modulo2': 5,
-  'seminario1': 2,
-  'internado_neonatologia': 10,
-  'internado_obstetricia': 10,
-  'internado_ap': 10,
-  'internado_gineco': 10,
-  'internado_electivo': 15,
-  'seminario2': 3,
-  'ingles4': 3,
-  'internado_electivo1': 15
-};
 
 // Prerrequisitos de cada ramo (ramos que deben estar aprobados para desbloquear este)
 const prerequisitos = {
-  'integracion1': ['fundamentos1'],
-  'bioquimica': ['quimica', 'biologia'],
-  'anatomia': ['biologia'],
-  'fisiologia': ['biologia', 'fisica'],
-  'biodesarrollo': ['biologia'],
-  'histologia': ['biologia'],
-  'investigacion1': ['mate', 'fisica'],
-  'educacion2': ['educacion1'],
-  'inmunologia': ['fisiologia'],
-  'cs_sociales2': ['cs_sociales1'],
-  'ingles2': ['ingles1'],
-  'saludcom1': [],
-  'fundamentos2': ['fisiologia', 'anatomia', 'histologia', 'integracion1'],
-  'obstetricia1': ['fisiologia', 'anatomia', 'histologia', 'biodesarrollo', 'integracion1'],
-  'neonatologia1': ['fisiologia', 'anatomia', 'histologia', 'biodesarrollo', 'integracion1'],
-  'fisiologia_sis': ['fisiologia'],
-  'agentes': ['fisiologia', 'anatomia', 'histologia'],
-  'cs_sociales3': ['cs_sociales2'],
-  'ingles3': ['ingles2'],
-  'neonatologia2': ['neonatologia1', 'fisiologia_sis', 'agentes'],
-  'obstetricia2': ['obstetricia1', 'fisiologia_sis'],
-  'gineco1': ['histologia', 'fisiologia_sis'],
-  'fisiopato': ['fisiologia_sis'],
-  'infectologia': ['agentes'],
-  'farmacologia': ['fisiologia_sis', 'bioquimica'],
-  'integracion2': ['fisiologia_sis','fundamentos2'],
-  'clinica_neonatal1': ['neonatologia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
-  'clinica_partos1': ['obstetricia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
-  'clinica_ap1': ['obstetricia2', 'gineco1', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
-  'clinica_puerperio': ['obstetricia2', 'fisiopato', 'infectologia', 'farmacologia', 'integracion2'],
-  'clinica_saludcom': ['integracion2'],
-  'modulo1': [],
-  'neonatologia3': ['farmacologia', 'fisiopato', 'obstetricia2'],
-  'saludcom2': ['saludcom1'],
-  'obstetricia_pat': ['obstetricia2', 'farmacologia', 'fisiopato'],
-  'gestion1': ['investigacion1'],
-  'investigacion2': ['investigacion1'],
-  'enfermeria_mq': ['neonatologia3', 'obstetricia_pat'],
-  'reproduccion': ['fisiologia_sis'],
-  'gineco_pat': ['clinica_ap1'],
-  'gestion2': ['gestion1'],
-  'investigacion3': ['investigacion2'],
-  'cs_sociales4': ['cs_sociales3'],
-  'clinica_neonatal2': ['neonatologia3', 'enfermeria_mq'],
-  'clinica_partos2': ['obstetricia_pat', 'enfermeria_mq'],
-  'clinica_ap2': ['obstetricia_pat', 'gineco_pat', 'saludcom2'],
-  'alto_riesgo': ['obstetricia_pat', 'enfermeria_mq'],
-  'clinica_mq': ['gineco_pat', 'enfermeria_mq'],
-  'modulo2': ['modulo1'],
-  'seminario1': ['investigacion3'],
-  'internado_neonatologia': ['clinica_neonatal2'],
-  'internado_obstetricia': ['clinica_partos2', 'alto_riesgo'],
-  'internado_ap': ['clinica_ap2'],
-  'internado_gineco': ['clinica_mq'],
-  'internado_neonatologia1': ['clinica_neonatal2'],
-  'internado_obstetricia1': ['clinica_partos2', 'alto_riesgo'],
-  'internado_ap1': ['clinica_ap2'],
-  'internado_gineco1': ['clinica_mq'],
-  'internado_electivo': [],
-  'internado_electivo1': [],
-  'seminario2': ['seminario1'],
-  'ingles4': ['ingles3']
+  // 2° año
+  'ingles_tecnico': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'anatomia': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'bioquimica': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'histologia': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'inmunologia': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'biologia_bucal': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'biofisica_aplicada': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'clinica': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'diagnostico': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+
+
+  // 3° año
+  'fisiologia': ['biologia_bucal', 'biofisica_aplicada'],           // N201
+  'patologia_general': ['inmunologia', 'biologia_bucal'],          // N202
+  'materiales1': ['biofisica_aplicada'],                            // N203
+  'preclinica1': ['anatomia', 'clinica', 'biologia_bucal'],        // N204
+  'preventiva1': ['anatomia', 'inmunologia', 'biologia_bucal', 'clinica', 'diagnostico'],  // N206
+  'preclinica_quirurgica': ['anatomia', 'clinica', 'inmunologia'], // N211
+  'microbiologia2': ['inmunologia'],                               // N205
+  'preventiva2': ['preclinica1', 'preventiva1', 'preclinica_quirurgica'], // N207
+  'preclinica2': ['materiales1', 'preclinica1', 'preventiva1'],    // N208
+  'endodoncia1': ['preclinica1', 'preventiva1', 'preclinica_quirurgica'], // N209
+  'patologia_bucal': ['patologia_general'],                        // N210
+  'materiales2': ['materiales1'],                                  // N212
+  'bioetica': ['clinica'],                                         // N213
+  'periodoncia': ['preventiva1'],                                 // N214
+
+
+  // 4° año
+  'preclinica_protesica': ['preclinica2', 'materiales2'],
+  'farmacologia': ['fisiologia', 'patologia_general'],
+  'medicina_interna': ['fisiologia', 'patologia_bucal', 'clinica'],
+  'endodoncia2': ['microbiologia2', 'patologia_bucal', 'preclinica2', 'endodoncia1', 'preventiva2'],
+  'periodoncia': ['microbiologia2', 'patologia_bucal', 'preventiva2', 'periodoncia'],
+  'restauradora': ['preventiva2', 'preclinica2', 'materiales2'],
+  'bioestadistica': ['ingles_tecnico'],
+  'historia': ['quimica', 'matematica', 'fisica', 'biologia', 'pensamiento', 'sociedad'],
+  'cirugia1': ['microbiologia2', 'preventiva2', 'patologia_bucal', 'preclinica_quirurgica'],
+
+  // 5° año
+  'rehabilitadora': ['preclinica_protesica', 'endodoncia2', 'periodoncia', 'restauradora'],
+  'cirugia2': ['farmacologia', 'medicina_interna', 'cirugia1'],
+  'integral_ninos': ['farmacologia', 'medicina_interna', 'endodoncia2', 'periodoncia', 'restauradora', 'cirugia1'],
+  'materiales3': ['preclinica_protesica', 'restauradora'],
+  'imagenes2': ['cirugia1'],
+  'medicina_bucal': ['medicina_interna', 'farmacologia'],
+  'epidemiologia': ['preventiva2', 'bioestadistica'],
+
+  // 6° año
+  'integral_adultos': ['rehabilitadora', 'cirugia2', 'medicina_bucal', 'materiales3'],
+  'cirugia3': ['cirugia2', 'medicina_bucal'],
+  'docencia_servicio': ['integral_ninos', 'epidemiologia'],
+  'integral_mayores': ['rehabilitadora', 'medicina_bucal'],
+  'ortodoncia1': ['integral_ninos', 'imagenes2'],
+  'medicina_bucal2': ['medicina_bucal'],
+  'forense': ['bioetica', 'rehabilitadora'],
+  'sistema_gestion': ['epidemiologia', 'forense']
 };
+
 
 // Funciones para guardar y cargar progreso en localStorage
 function obtenerAprobados() {
@@ -147,44 +72,25 @@ function guardarAprobados(aprobados) {
   localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
 }
 
-// Calcula el total de créditos de ramos aprobados
-function calcularCreditosAprobados() {
-  const aprobados = obtenerAprobados();
-  return aprobados.reduce((sum, ramo) => sum + (creditos[ramo] || 0), 0);
-}
-
 // Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos y créditos especiales
 function actualizarDesbloqueos() {
   const aprobados = obtenerAprobados();
-  const totalCreditos = calcularCreditosAprobados();
 
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
     const elem = document.getElementById(destino);
     if (!elem) continue;
 
-    // Verificar si se cumplen prerrequisitos normales
     let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
-
-    // Reglas especiales con créditos para ciertos módulos
-    if (destino === 'modulo1') {
-      puedeDesbloquear = totalCreditos >= 90;
-    }
-    if (destino === 'modulo2') {
-      puedeDesbloquear = aprobados.includes('modulo1') && totalCreditos >= 170;
-    }
-    if (destino === 'internado_electivo' || destino === 'internado_electivo1') {
-      puedeDesbloquear = totalCreditos >= 240;
-    }
 
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
       else elem.classList.add('bloqueado');
     } else {
-      // Si está aprobado, no debe estar bloqueado
       elem.classList.remove('bloqueado');
     }
   }
 }
+
 
 // Maneja el clic para aprobar o desaprobar un ramo (solo si no está bloqueado)
 function aprobar(e) {

@@ -1,142 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Interactiva Obstetricia UChile – Universidad de Chile</title>
-  <meta name="description" content="Explora la malla curricular interactiva de Obstetricia y Puericultura en la Universidad de Chile. Descubre requisitos por semestre y desbloquea ramos al aprobar.">
+  <meta name="description"
+    content="Explora la malla curricular interactiva de Obstetricia y Puericultura en la Universidad de Chile. Descubre requisitos por semestre y desbloquea ramos al aprobar.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="estilos.css" />
 </head>
 
 <body>
-  <h1>Obstetricia y Puericultura UChile</h1>
+  <h1>Odontología</h1>
   <div class="malla-grid">
     <div class="semestre" id="sem1">
-      <h2>1° Semestre</h2>
-      <div class="ramo" id="fundamentos1" onclick="aprobar('fundamentos1')">Fundamentos de Enfermería I</div>
-      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química General y Orgánica</div>
-      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología Celular y Genética</div>
-      <div class="ramo" id="mate" onclick="aprobar('mate')">Matemáticas</div>
-      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física</div>
-      <div class="ramo" id="educacion1" onclick="aprobar('educacion1')">Educación en Salud I</div>
-      <div class="ramo" id="cs_sociales1" onclick="aprobar('cs_sociales1')">Cs. Sociales y Salud I</div>
-      <div class="ramo" id="cfg1" onclick="aprobar('cfg1')">Curso de Formación General I</div>
-      <div class="ramo" id="ingles1" onclick="aprobar('ingles1')">Inglés I</div>
+      <h2>1° Año</h2>
+      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química</div>
+      <div class="ramo" id="matematica" onclick="aprobar('matematica')">Matemática</div>
+      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física e Introducción a la Biofísica</div>
+      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología e Introducción a la Biología Celular</div>
+      <div class="ramo" id="pensamiento" onclick="aprobar('pensamiento')">Introducción al Pensamiento Científico</div>
+      <div class="ramo" id="sociedad" onclick="aprobar('sociedad')">Introducción al Conocimiento de la Sociedad y el
+        Estado</div>
     </div>
+
 
     <div class="semestre" id="sem2">
-      <h2>2° Semestre</h2>
-      <div class="ramo bloqueado" id="saludcom1" onclick="aprobar('saludcom1')">Salud Comunitaria I</div>
-      <div class="ramo bloqueado" id="bioquimica" onclick="aprobar('bioquimica')">Bioquímica</div>
-      <div class="ramo bloqueado" id="biodesarrollo" onclick="aprobar('biodesarrollo')">Biología del Desarrollo y Embriología Humana</div>
-      <div class="ramo bloqueado" id="fisiologia" onclick="aprobar('fisiologia')">Fisiología General</div>
-      <div class="ramo bloqueado" id="anatomia" onclick="aprobar('anatomia')">Anatomía</div>
-      <div class="ramo bloqueado" id="histologia" onclick="aprobar('histologia')">Histología</div>
-      <div class="ramo bloqueado" id="integracion1" onclick="aprobar('integracion1')">Integración al Desempeño Profesional I</div>
-      <div class="ramo" id="cfg2" onclick="aprobar('cfg2')">Curso de Formación General II</div>
-      <div class="ramo bloqueado" id="ingles2" onclick="aprobar('ingles2')">Inglés II</div>
+      <h2>2° Año</h2>
+
+      <!-- Materias Iniciales (sin correlativas específicas dentro del 2° año) -->
+      <div class="ramo" id="ingles_tecnico" onclick="aprobar('ingles_tecnico')">Inglés Técnico</div>
+
+      <!-- Materias Anuales -->
+      <div class="ramo bloqueado" id="anatomia" onclick="aprobar('anatomia')"> Anatomía General y Estomatológica<br>
+      </div>
+
+      <!-- Materias del Ciclo A -->
+      <div class="ramo bloqueado" id="bioquimica" onclick="aprobar('bioquimica')"> Bioquímica General<br> </div>
+      <div class="ramo bloqueado" id="histologia" onclick="aprobar('histologia')"> Histología y Embriología<br></div>
+
+      <!-- Materias del Ciclo B -->
+      <div class="ramo bloqueado" id="inmunologia" onclick="aprobar('inmunologia')"> Inmunología y Microbiología I<br>
+      </div>
+      <div class="ramo bloqueado" id="biologia_bucal" onclick="aprobar('biologia_bucal')"> Biología Bucal<br>
+      </div>
+      <div class="ramo bloqueado" id="biofisica_aplicada" onclick="aprobar('biofisica_aplicada')"> Biofísica Aplicada a
+        la Práctica Odontológica<br> </div>
+      <div class="ramo bloqueado" id="clinica" onclick="aprobar('clinica')"> Inserción Temprana en la Clínica <br></div>
+      <div class="ramo bloqueado" id="diagnostico" onclick="aprobar('diagnostico')"> Diagnóstico por Imágenes con
+        Radiofísica Sanitaria<br> </div>
     </div>
+
 
     <div class="semestre" id="sem3">
-      <h2>3° Semestre</h2>
-      <div class="ramo bloqueado" id="fundamentos2" onclick="aprobar('fundamentos2')">Fundamentos de Enfermería II</div>
-      <div class="ramo bloqueado" id="obstetricia1" onclick="aprobar('obstetricia1')">Obstetricia Fisiológica I</div>
-      <div class="ramo bloqueado" id="neonatologia1" onclick="aprobar('neonatologia1')">Neonatología I</div>
-      <div class="ramo bloqueado" id="fisiologia_sis" onclick="aprobar('fisiologia_sis')">Fisiología de Sistemas</div>
-      <div class="ramo bloqueado" id="inmunologia" onclick="aprobar('inmunologia')">Inmunología</div>
-      <div class="ramo bloqueado" id="agentes" onclick="aprobar('agentes')">Agentes Vivos de Enfermedad</div>
-      <div class="ramo bloqueado" id="cs_sociales2" onclick="aprobar('cs_sociales2')">Cs. Sociales y Salud II</div>
-      <div class="ramo bloqueado" id="ingles3" onclick="aprobar('ingles3')">Inglés III</div>
+      <h2>3° Año</h2>
+
+      <!-- Materias Anuales -->
+      <div class="ramo bloqueado" id="fisiologia" onclick="aprobar('fisiologia')">Fisiología</div>
+
+      <!-- Materias del Ciclo A -->
+      <div class="ramo bloqueado" id="patologia_general" onclick="aprobar('patologia_general')">Patología General</div>
+      <div class="ramo bloqueado" id="materiales1" onclick="aprobar('materiales1')">Materiales Dentales I</div>
+      <div class="ramo bloqueado" id="preclinica1" onclick="aprobar('preclinica1')">Preclínica de Odontología
+        Restauradora I</div>
+      <div class="ramo bloqueado" id="preventiva1" onclick="aprobar('preventiva1')">Odontología Preventiva y Mínimamente
+        Invasiva I</div>
+      <div class="ramo bloqueado" id="preclinica_quirurgica" onclick="aprobar('preclinica_quirurgica')">Preclínica
+        Quirúrgica y Anestesia</div>
+      <div class="ramo bloqueado" id="microbiologia2" onclick="aprobar('microbiologia2')">Microbiología II</div>
+
+      <!-- Materias del Ciclo B -->
+      <div class="ramo bloqueado" id="preventiva2" onclick="aprobar('preventiva2')">Odontología Preventiva y Mínimamente
+        Invasiva II</div>
+      <div class="ramo bloqueado" id="preclinica2" onclick="aprobar('preclinica2')">Preclínica de Odontología
+        Restauradora II</div>
+      <div class="ramo bloqueado" id="endodoncia1" onclick="aprobar('endodoncia1')">Endodoncia I</div>
+      <div class="ramo bloqueado" id="patologia_bucal" onclick="aprobar('patologia_bucal')">Patología Bucal</div>
+      <div class="ramo bloqueado" id="materiales2" onclick="aprobar('materiales2')">Materiales Dentales II</div>
+      <div class="ramo bloqueado" id="bioetica" onclick="aprobar('bioetica')">Bioética y Ejercicio Profesional</div>
+      <div class="ramo bloqueado" id="periodoncia" onclick="aprobar('periodoncia')">Introducción a la Periodoncia</div>
     </div>
+
 
     <div class="semestre" id="sem4">
-      <h2>4° Semestre</h2>
-      <div class="ramo bloqueado" id="neonatologia2" onclick="aprobar('neonatologia2')">Neonatología II</div>
-      <div class="ramo bloqueado" id="obstetricia2" onclick="aprobar('obstetricia2')">Obstetricia Fisiológica II</div>
-      <div class="ramo bloqueado" id="gineco1" onclick="aprobar('gineco1')">Ginecología Fisiológica</div>
-      <div class="ramo bloqueado" id="fisiopato" onclick="aprobar('fisiopato')">Fisiopatología</div>
-      <div class="ramo bloqueado" id="infectologia" onclick="aprobar('infectologia')">Infectología</div>
+      <h2>4° Año</h2>
+
+      <!-- Materias Anuales -->
+      <div class="ramo bloqueado" id="preclinica_protesica" onclick="aprobar('preclinica_protesica')">Preclínica de
+        Rehabilitación Protética</div>
       <div class="ramo bloqueado" id="farmacologia" onclick="aprobar('farmacologia')">Farmacología</div>
-      <div class="ramo bloqueado" id="integracion2" onclick="aprobar('integracion2')">Integración al Desempeño Profesional II</div>
-      <div class="ramo bloqueado" id="investigacion1" onclick="aprobar('investigacion1')">Investigación en Salud I</div>
+      <div class="ramo bloqueado" id="medicina_interna" onclick="aprobar('medicina_interna')">Medicina Interna en la
+        Práctica Odontológica</div>
+      <div class="ramo bloqueado" id="endodoncia2" onclick="aprobar('endodoncia2')">Endodoncia II</div>
+      <div class="ramo bloqueado" id="periodoncia" onclick="aprobar('periodoncia')">Periodoncia</div>
+      <div class="ramo bloqueado" id="restauradora" onclick="aprobar('restauradora')">Odontología Restauradora</div>
+      <div class="ramo bloqueado" id="bioestadistica" onclick="aprobar('bioestadistica')">Bioestadística y Metodología
+        de la Investigación</div>
+      <div class="ramo bloqueado" id="historia" onclick="aprobar('historia')">Historia de la Odontología</div>
+      <div class="ramo bloqueado" id="cirugia1" onclick="aprobar('cirugia1')">Cirugía y Traumatología Bucomaxilofacial I
+      </div>
     </div>
+
 
     <div class="semestre" id="sem5">
-      <h2>5° Semestre</h2>
-      <div class="ramo bloqueado" id="clinica_neonatal1" onclick="aprobar('clinica_neonatal1')">Clínica Neonatal I</div>
-      <div class="ramo bloqueado" id="clinica_partos1" onclick="aprobar('clinica_partos1')">Clínica de Partos I</div>
-      <div class="ramo bloqueado" id="clinica_ap1" onclick="aprobar('clinica_ap1')">Clínica de Atención Primaria I</div>
-      <div class="ramo bloqueado" id="clinica_puerperio" onclick="aprobar('clinica_puerperio')">Clínica de Puerperio</div>
-      <div class="ramo bloqueado" id="clinica_saludcom" onclick="aprobar('clinica_saludcom')">Clínica de Salud Comunitaria</div>
-      <div class="ramo bloqueado" id="modulo1" onclick="aprobar('modulo1')">Módulo Interdisciplinario I</div>
+      <h2>5° Año</h2>
+
+      <!-- Materias Anuales -->
+      <div class="ramo bloqueado" id="rehabilitadora" onclick="aprobar('rehabilitadora')">Odontología Rehabilitadora
+        Integral</div>
+      <div class="ramo bloqueado" id="cirugia2" onclick="aprobar('cirugia2')">Cirugía y Traumatología Bucomáxilofacial
+        II</div>
+      <div class="ramo bloqueado" id="integral_ninos" onclick="aprobar('integral_ninos')">Odontología Integral de Niños
+        y Adolescentes</div>
+
+      <!-- Materias del Ciclo A -->
+      <div class="ramo bloqueado" id="materiales3" onclick="aprobar('materiales3')">Materiales Dentales III</div>
+      <div class="ramo bloqueado" id="imagenes2" onclick="aprobar('imagenes2')">Diagnóstico por Imágenes II</div>
+
+      <!-- Materias del Ciclo B -->
+      <div class="ramo bloqueado" id="medicina_bucal" onclick="aprobar('medicina_bucal')">Medicina Bucal I</div>
+      <div class="ramo bloqueado" id="epidemiologia" onclick="aprobar('epidemiologia')">Epidemiología y Salud de las
+        Poblaciones</div>
     </div>
+
 
     <div class="semestre" id="sem6">
-      <h2>6° Semestre</h2>
-      <div class="ramo bloqueado" id="neonatologia3" onclick="aprobar('neonatologia3')">Neonatología III</div>
-      <div class="ramo bloqueado" id="saludcom2" onclick="aprobar('saludcom2')">Salud Comunitaria II</div>
-      <div class="ramo bloqueado" id="obstetricia_pat" onclick="aprobar('obstetricia_pat')">Obstetricia Patológica</div>
-      <div class="ramo bloqueado" id="gestion1" onclick="aprobar('gestion1')">Gestión y Liderazgo en Salud I</div>
-      <div class="ramo bloqueado" id="educacion2" onclick="aprobar('educacion2')">Educación en Salud II</div>
-      <div class="ramo bloqueado" id="investigacion2" onclick="aprobar('investigacion2')">Investigación en Salud II</div>
-      <div class="ramo bloqueado" id="cs_sociales3" onclick="aprobar('cs_sociales3')">Cs. Sociales y Salud III</div>
-      <div class="ramo" id="cfg3" onclick="aprobar('cfg3')">Curso de Formación General III</div>
+      <h2>6° Año</h2>
+
+      <!-- Materias Anuales -->
+      <div class="ramo bloqueado" id="integral_adultos" onclick="aprobar('integral_adultos')">Odontología Integral
+        Adultos (PPS)</div>
+      <div class="ramo bloqueado" id="cirugia3" onclick="aprobar('cirugia3')">Cirugía y Traumatología Bucomáxilofacial
+        III</div>
+      <div class="ramo bloqueado" id="docencia_servicio" onclick="aprobar('docencia_servicio')">Articulación
+        Docencia-Servicios-Investigación (Práctica Social Educativa)</div>
+      <div class="ramo bloqueado" id="integral_mayores" onclick="aprobar('integral_mayores')">Odontología Integral para
+        el Adulto Mayor</div>
+
+      <!-- Materias del Ciclo A -->
+      <div class="ramo bloqueado" id="ortodoncia1" onclick="aprobar('ortodoncia1')">Ortodoncia I</div>
+      <div class="ramo bloqueado" id="medicina_bucal2" onclick="aprobar('medicina_bucal2')">Medicina Bucal II</div>
+      <div class="ramo bloqueado" id="forense" onclick="aprobar('forense')">Odontología Forense</div>
+
+      <!-- Materias del Ciclo B -->
+      <div class="ramo bloqueado" id="sistema_gestion" onclick="aprobar('sistema_gestion')">Sistema de Salud y Gestión
+        Clínica</div>
     </div>
 
-    <div class="semestre" id="sem7">
-      <h2>7° Semestre</h2>
-      <div class="ramo bloqueado" id="enfermeria_mq" onclick="aprobar('enfermeria_mq')">Enfermería Médico Quirúrgica</div>
-      <div class="ramo bloqueado" id="reproduccion" onclick="aprobar('reproduccion')">Reproducción Humana</div>
-      <div class="ramo bloqueado" id="gineco_pat" onclick="aprobar('gineco_pat')">Ginecología Patológica</div>
-      <div class="ramo bloqueado" id="gestion2" onclick="aprobar('gestion2')">Gestión y Liderazgo en Salud II</div>
-      <div class="ramo bloqueado" id="investigacion3" onclick="aprobar('investigacion3')">Investigación en Salud III</div>
-      <div class="ramo bloqueado" id="cs_sociales4" onclick="aprobar('cs_sociales4')">Cs. Sociales y Salud IV</div>
-      <div class="ramo" id="cfg4" onclick="aprobar('cfg4')">Curso de Formación General IV</div>
-      <div class="ramo bloqueado" id="ingles4" onclick="aprobar('ingles4')">Inglés IV</div>
-    </div>
+    <script src="script.js"></script>
 
-    <div class="semestre" id="sem8">
-      <h2>8° Semestre</h2>
-      <div class="ramo bloqueado" id="clinica_neonatal2" onclick="aprobar('clinica_neonatal2')">Clínica Neonatal II</div>
-      <div class="ramo bloqueado" id="clinica_partos2" onclick="aprobar('clinica_partos2')">Clínica de Partos II</div>
-      <div class="ramo bloqueado" id="clinica_ap2" onclick="aprobar('clinica_ap2')">Clínica Atención Primaria II</div>
-      <div class="ramo bloqueado" id="alto_riesgo" onclick="aprobar('alto_riesgo')">Clínica Alto Riesgo Obstétrico</div>
-      <div class="ramo bloqueado" id="clinica_mq" onclick="aprobar('clinica_mq')">Clínica de Enfermería MQ</div>
-      <div class="ramo bloqueado" id="modulo2" onclick="aprobar('modulo2')">Módulo Interdisciplinario II</div>
-    </div>
-
-    <div class="semestre" id="sem9">
-      <h2>9° Semestre</h2>
-      <div class="ramo bloqueado" id="internado_neonatologia" onclick="aprobar('internado_neonatologia')">Internado Neonatología</div>
-      <div class="ramo bloqueado" id="internado_obstetricia" onclick="aprobar('internado_obstetricia')">Internado Obstetricia</div>
-      <div class="ramo bloqueado" id="internado_ap" onclick="aprobar('internado_ap')">Internado Atención Primaria</div>
-      <div class="ramo bloqueado" id="internado_gineco" onclick="aprobar('internado_gineco')">Internado Ginecología</div>
-      <div class="ramo bloqueado" id="internado_electivo" onclick="aprobar('internado_electivo')">Internado Electivo</div>
-      <div class="ramo bloqueado" id="seminario1" onclick="aprobar('seminario1')">Seminario Unidad Investigación I</div>
-    </div>
-
-    <div class="semestre" id="sem10">
-      <h2>10° Semestre</h2>
-      <div class="ramo bloqueado" id="internado_neonatologia1" onclick="aprobar('internado_neonatologia1')">Internado Neonatología</div>
-      <div class="ramo bloqueado" id="internado_obstetricia1" onclick="aprobar('internado_obstetricia1')">Internado Obstetricia</div>
-      <div class="ramo bloqueado" id="internado_ap1" onclick="aprobar('internado_ap1')">Internado Atención Primaria</div>
-      <div class="ramo bloqueado" id="internado_gineco1" onclick="aprobar('internado_gineco1')">Internado Ginecología</div>
-      <div class="ramo bloqueado" id="internado_electivo1" onclick="aprobar('internado_electivo1')">Internado Electivo</div>
-      <div class="ramo bloqueado" id="seminario2" onclick="aprobar('seminario2')">Seminario Unidad Investigación II</div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-
-  <style>
-    h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      color: #c2185b;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-  </style>
+    <style>
+      h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: #c2185b;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+    </style>
 </body>
+
 </html>
