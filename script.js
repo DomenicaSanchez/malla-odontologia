@@ -61,7 +61,6 @@ const prerequisitos = {
   'sistema_gestion': ['epidemiologia', 'forense']
 };
 
-
 // Funciones para guardar y cargar progreso en localStorage
 function obtenerAprobados() {
   const data = localStorage.getItem('mallaAprobados');
@@ -72,7 +71,36 @@ function guardarAprobados(aprobados) {
   localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
 }
 
-// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos y créditos especiales
+// Función para aprobar/desaprobar una materia
+function aprobar(materiaId) {
+  const aprobados = obtenerAprobados();
+  const elemento = document.getElementById(materiaId);
+
+  if (!elemento) return;
+
+  // Verificar si la materia ya está aprobada
+  const index = aprobados.indexOf(materiaId);
+
+  if (index === -1) {
+    // Si no está aprobada, verificar si puede aprobarse (no bloqueada)
+    if (!elemento.classList.contains('bloqueado')) {
+      aprobados.push(materiaId);
+      elemento.classList.add('aprobado');
+    } else {
+      alert('No puedes aprobar esta materia hasta completar los prerrequisitos necesarios.');
+      return;
+    }
+  } else {
+    // Si ya está aprobada, quitarla de aprobados
+    aprobados.splice(index, 1);
+    elemento.classList.remove('aprobado');
+  }
+
+  guardarAprobados(aprobados);
+  actualizarDesbloqueos();
+}
+
+// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos
 function actualizarDesbloqueos() {
   const aprobados = obtenerAprobados();
 
@@ -80,11 +108,15 @@ function actualizarDesbloqueos() {
     const elem = document.getElementById(destino);
     if (!elem) continue;
 
+    // Verificar si todos los prerrequisitos están aprobados
     let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
 
     if (!elem.classList.contains('aprobado')) {
-      if (puedeDesbloquear) elem.classList.remove('bloqueado');
-      else elem.classList.add('bloqueado');
+      if (puedeDesbloquear) {
+        elem.classList.remove('bloqueado');
+      } else {
+        elem.classList.add('bloqueado');
+      }
     } else {
       elem.classList.remove('bloqueado');
     }
@@ -92,39 +124,17 @@ function actualizarDesbloqueos() {
 }
 
 
-// Maneja el clic para aprobar o desaprobar un ramo (solo si no está bloqueado)
-function aprobar(e) {
-  const ramo = e.currentTarget;
-  if (ramo.classList.contains('bloqueado')) return;
-
-  ramo.classList.toggle('aprobado');
-
+// Inicializar la malla al cargar la página
+document.addEventListener('DOMContentLoaded', function () {
+  // Cargar materias aprobadas
   const aprobados = obtenerAprobados();
-  if (ramo.classList.contains('aprobado')) {
-    if (!aprobados.includes(ramo.id)) aprobados.push(ramo.id);
-  } else {
-    const idx = aprobados.indexOf(ramo.id);
-    if (idx > -1) aprobados.splice(idx, 1);
-  }
-  guardarAprobados(aprobados);
-
-  actualizarDesbloqueos();
-}
-
-// Al cargar la página, asignar eventos, cargar progreso y actualizar desbloqueos
-window.addEventListener('DOMContentLoaded', () => {
-  const todosRamos = document.querySelectorAll('.ramo');
-
-  const aprobados = obtenerAprobados();
-  todosRamos.forEach(ramo => {
-    if (aprobados.includes(ramo.id)) {
-      ramo.classList.add('aprobado');
+  aprobados.forEach(materiaId => {
+    const elemento = document.getElementById(materiaId);
+    if (elemento) {
+      elemento.classList.add('aprobado');
     }
   });
 
-  todosRamos.forEach(ramo => {
-    ramo.addEventListener('click', aprobar);
-  });
-
+  // Actualizar desbloqueos
   actualizarDesbloqueos();
 });

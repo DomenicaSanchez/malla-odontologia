@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Facultad de Odontología UBA </title>
+  <title>Malla Interactiva Obstetricia UChile – Universidad de Chile</title>
   <meta name="description"
-    content="Explora la malla curricular interactiva de Odontología en la UBA. Haz clic en las materias para marcar tu progreso académico." />
+    content="Explora la malla curricular interactiva de Obstetricia y Puericultura en la Universidad de Chile. Descubre requisitos por semestre y desbloquea ramos al aprobar.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="estilos.css" />
 </head>
 
 <body>
-  <h1>Malla de Odontología</h1>
+  <h1>Odontología</h1>
   <div class="malla-grid">
     <div class="semestre" id="sem1">
       <h2>1° Año</h2>
@@ -24,6 +24,7 @@
       <div class="ramo" id="sociedad" onclick="aprobar('sociedad')">Introducción al Conocimiento de la Sociedad y el
         Estado</div>
     </div>
+
 
     <div class="semestre" id="sem2">
       <h2>2° Año</h2>

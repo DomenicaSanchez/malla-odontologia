@@ -11,6 +11,7 @@ h1 {
   color: #c2185b;
   text-align: center;
   margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .malla-grid {
@@ -23,64 +24,319 @@ h1 {
 
 .semestre {
   min-width: 220px;
-  background-color: #ffe4ec;
-  border: 2px solid #f48fb1;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.semestre:hover {
+  transform: translateY(-5px);
 }
 
 .semestre h2 {
   text-align: center;
-  color: #ad1457;
   font-size: 1.1em;
   margin-bottom: 12px;
-  border-bottom: 1px solid #f8bbd0;
+  border-bottom: 1px solid;
   padding-bottom: 6px;
 }
 
 .ramo {
-  background: linear-gradient(145deg, #f8bbd0, #ec9fb9);
-  border: 1px solid #c2185b;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 10px;
   text-align: center;
   cursor: pointer;
-  color: #880e4f;
   font-weight: 600;
-  /* Sombra para efecto 3D */
-  box-shadow: 4px 4px 8px #c28aa2, -4px -4px 8px #ffcee1;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.ramo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.ramo:hover::before {
+  left: 100%;
 }
 
 .ramo:hover {
-  background: linear-gradient(145deg, #f48fb1, #e47c9d);
-  box-shadow: 6px 6px 10px #b67288, -6px -6px 10px #ffbed4;
-  color: #5c0040;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.15), -6px -6px 10px rgba(255, 255, 255, 0.6);
   transform: translateY(-3px);
 }
 
 .ramo:active {
-  box-shadow: inset 3px 3px 5px #b67288, inset -3px -3px 5px #ffbed4;
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.1), inset -3px -3px 5px rgba(255, 255, 255, 0.5);
   transform: translateY(1px);
 }
 
+/* Estado: Materia bloqueada (no disponible) */
 .ramo.bloqueado {
-  background-color: #f3f3f3;
-  color: #999;
-  border-style: dashed;
+  background: #f9f9f9;
+  color: #aaa;
+  border: 1px dashed #ccc;
   cursor: not-allowed;
   box-shadow: none;
-  background: none;
+  transform: none;
 }
 
+.ramo.bloqueado:hover {
+  background: #f9f9f9;
+  color: #aaa;
+  box-shadow: none;
+  transform: none;
+}
+
+.ramo.bloqueado::before {
+  display: none;
+}
+
+/* Estado: Materia aprobada */
 .ramo.aprobado {
-  background: linear-gradient(145deg, #d1bee7, #b695d3) !important;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+  position: relative;
+  padding-right: 30px;
+}
+
+.ramo.aprobado::after {
+  content: "✓";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Estado: Materia disponible (no aprobada pero desbloqueada) */
+.ramo:not(.bloqueado):not(.aprobado) {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+  }
+
+  50% {
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.6);
+  }
+
+  100% {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* 1° Año - Color pastel rosa */
+#sem1 {
+  background-color: #ffe4ec;
+  border: 2px solid #f48fb1;
+}
+
+#sem1 h2 {
+  color: #ad1457;
+  border-color: #f8bbd0;
+}
+
+#sem1 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #f8bbd0, #ec9fb9);
+  border: 1px solid #c2185b;
+  color: #880e4f;
+}
+
+#sem1 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #f48fb1, #e47c9d);
+  color: #5c0040;
+}
+
+#sem1 .ramo.aprobado {
+  background: linear-gradient(145deg, #d1bee7, #b695d3);
   color: #4a148c;
   border-color: #6a1b9a;
-  text-decoration: line-through;
-  font-style: italic;
-  box-shadow: 4px 4px 8px #8a69a2, -4px -4px 8px #c6aee1;
+}
+
+/* 2° Año - Color pastel lavanda */
+#sem2 {
+  background-color: #f3e5f5;
+  border: 2px solid #ce93d8;
+}
+
+#sem2 h2 {
+  color: #7b1fa2;
+  border-color: #e1bee7;
+}
+
+#sem2 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #e1bee7, #d1c4e9);
+  border: 1px solid #9c27b0;
+  color: #6a1b9a;
+}
+
+#sem2 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #ce93d8, #b39ddb);
+  color: #4a148c;
+}
+
+#sem2 .ramo.aprobado {
+  background: linear-gradient(145deg, #c5e1a5, #aed581);
+  color: #33691e;
+  border-color: #689f38;
+}
+
+/* 3° Año - Color pastel azul */
+#sem3 {
+  background-color: #e3f2fd;
+  border: 2px solid #90caf9;
+}
+
+#sem3 h2 {
+  color: #1565c0;
+  border-color: #bbdefb;
+}
+
+#sem3 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #bbdefb, #90caf9);
+  border: 1px solid #1976d2;
+  color: #0d47a1;
+}
+
+#sem3 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #90caf9, #64b5f6);
+  color: #0d47a1;
+}
+
+#sem3 .ramo.aprobado {
+  background: linear-gradient(145deg, #80deea, #4dd0e1);
+  color: #006064;
+  border-color: #0097a7;
+}
+
+/* 4° Año - Color pastel verde */
+#sem4 {
+  background-color: #e8f5e9;
+  border: 2px solid #a5d6a7;
+}
+
+#sem4 h2 {
+  color: #2e7d32;
+  border-color: #c8e6c9;
+}
+
+#sem4 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+  border: 1px solid #388e3c;
+  color: #1b5e20;
+}
+
+#sem4 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #a5d6a7, #81c784);
+  color: #0d5302;
+}
+
+#sem4 .ramo.aprobado {
+  background: linear-gradient(145deg, #ffcc80, #ffb74d);
+  color: #e65100;
+  border-color: #f57c00;
+}
+
+/* 5° Año - Color pastel naranja */
+#sem5 {
+  background-color: #fff3e0;
+  border: 2px solid #ffcc80;
+}
+
+#sem5 h2 {
+  color: #ef6c00;
+  border-color: #ffe0b2;
+}
+
+#sem5 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #ffe0b2, #ffcc80);
+  border: 1px solid #f57c00;
+  color: #e65100;
+}
+
+#sem5 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #ffcc80, #ffb74d);
+  color: #d84315;
+}
+
+#sem5 .ramo.aprobado {
+  background: linear-gradient(145deg, #b2ebf2, #80deea);
+  color: #006064;
+  border-color: #0097a7;
+}
+
+/* 6° Año - Color pastel amarillo */
+#sem6 {
+  background-color: #fffde7;
+  border: 2px solid #fff176;
+}
+
+#sem6 h2 {
+  color: #f9a825;
+  border-color: #fff59d;
+}
+
+#sem6 .ramo:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #fff59d, #fff176);
+  border: 1px solid #fbc02d;
+  color: #f57f17;
+}
+
+#sem6 .ramo:hover:not(.bloqueado):not(.aprobado) {
+  background: linear-gradient(145deg, #fff176, #ffee58);
+  color: #e65100;
+}
+
+#sem6 .ramo.aprobado {
+  background: linear-gradient(145deg, #d1c4e9, #b39ddb);
+  color: #4527a0;
+  border-color: #5e35b1;
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+  .malla-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .semestre {
+    min-width: auto;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* Scroll personalizado para el contenedor de la malla */
+.malla-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.malla-grid::-webkit-scrollbar-track {
+  background: #ffe4ec;
+  border-radius: 10px;
+}
+
+.malla-grid::-webkit-scrollbar-thumb {
+  background: #f48fb1;
+  border-radius: 10px;
+}
+
+.malla-grid::-webkit-scrollbar-thumb:hover {
+  background: #c2185b;
 }
