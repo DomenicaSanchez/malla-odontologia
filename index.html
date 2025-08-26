@@ -4,160 +4,406 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Facultad de Odontología UBA </title>
+  <title>Facultad de Odontología UBA</title>
   <meta name="description"
     content="Explora la malla curricular interactiva de Odontología en la UBA. Haz clic en las materias para marcar tu progreso académico." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css" />
 </head>
 
 <body>
-  <h1>Malla de Odontología</h1>
-  <div class="malla-grid">
-    <div class="semestre" id="sem1">
-      <h2>1° Año</h2>
-      <div class="ramo" id="quimica" onclick="aprobar('quimica')">Química</div>
-      <div class="ramo" id="matematica" onclick="aprobar('matematica')">Matemática</div>
-      <div class="ramo" id="fisica" onclick="aprobar('fisica')">Física e Introducción a la Biofísica</div>
-      <div class="ramo" id="biologia" onclick="aprobar('biologia')">Biología e Introducción a la Biología Celular</div>
-      <div class="ramo" id="pensamiento" onclick="aprobar('pensamiento')">Introducción al Pensamiento Científico</div>
-      <div class="ramo" id="sociedad" onclick="aprobar('sociedad')">Introducción al Conocimiento de la Sociedad y el
-        Estado</div>
-    </div>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-tooth"></i> Malla de Odontología UBA</h1>
+      <div class="controls">
+        <button id="btnReset" class="btn-reset"><i class="fas fa-undo"></i> Reiniciar Progreso</button>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span id="progressText">0% completado</span>
+        </div>
+      </div>
+    </header>
 
-    <div class="semestre" id="sem2">
-      <h2>2° Año</h2>
-
-      <!-- Materias Iniciales (sin correlativas específicas dentro del 2° año) -->
-      <div class="ramo" id="ingles_tecnico" onclick="aprobar('ingles_tecnico')">Inglés Técnico</div>
-
-      <!-- Materias Anuales -->
-      <div class="ramo bloqueado" id="anatomia" onclick="aprobar('anatomia')"> Anatomía General y Estomatológica<br>
+    <main>
+      <div class="instructions">
+        <p><i class="fas fa-info-circle"></i> Haz clic en las materias para marcarlas como aprobadas. Las materias se
+          desbloquearán automáticamente al completar los requisitos previos.</p>
       </div>
 
-      <!-- Materias del Ciclo A -->
-      <div class="ramo bloqueado" id="bioquimica" onclick="aprobar('bioquimica')"> Bioquímica General<br> </div>
-      <div class="ramo bloqueado" id="histologia" onclick="aprobar('histologia')"> Histología y Embriología<br></div>
+      <div class="malla-grid-container">
+        <div class="navigation-buttons">
+          <button id="scrollLeft" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+          <button id="scrollRight" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
 
-      <!-- Materias del Ciclo B -->
-      <div class="ramo bloqueado" id="inmunologia" onclick="aprobar('inmunologia')"> Inmunología y Microbiología I<br>
+        <div class="malla-grid" id="mallaGrid">
+          <!-- 1° Año -->
+          <div class="semestre" id="sem1">
+            <div class="semestre-header">
+              <h2><i class="fas fa-1"></i> Primer Año</h2>
+            </div>
+            <div class="ramo" id="quimica" onclick="aprobar('quimica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Química</span>
+              </div>
+            </div>
+            <div class="ramo" id="matematica" onclick="aprobar('matematica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Matemática</span>
+              </div>
+            </div>
+            <div class="ramo" id="fisica" onclick="aprobar('fisica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Física e Introducción a la Biofísica</span>
+              </div>
+            </div>
+            <div class="ramo" id="biologia" onclick="aprobar('biologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Biología e Introducción a la Biología Celular</span>
+              </div>
+            </div>
+            <div class="ramo" id="pensamiento" onclick="aprobar('pensamiento')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Introducción al Pensamiento Científico</span>
+              </div>
+            </div>
+            <div class="ramo" id="sociedad" onclick="aprobar('sociedad')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Introducción al Conocimiento de la Sociedad y el Estado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2° Año -->
+          <div class="semestre" id="sem2">
+            <div class="semestre-header">
+              <h2><i class="fas fa-2"></i> Segundo Año</h2>
+            </div>
+
+            <!-- Materias Iniciales -->
+            <div class="ramo" id="ingles_tecnico" onclick="aprobar('ingles_tecnico')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Inglés Técnico</span>
+              </div>
+            </div>
+
+            <!-- Materias Anuales -->
+            <div class="ramo" id="anatomia" onclick="aprobar('anatomia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Anatomía General y Estomatológica</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo A -->
+            <div class="ramo" id="bioquimica" onclick="aprobar('bioquimica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Bioquímica General</span>
+              </div>
+            </div>
+            <div class="ramo" id="histologia" onclick="aprobar('histologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Histología y Embriología</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo B -->
+            <div class="ramo" id="inmunologia" onclick="aprobar('inmunologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Inmunología y Microbiología I</span>
+              </div>
+            </div>
+            <div class="ramo" id="biologia_bucal" onclick="aprobar('biologia_bucal')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Biología Bucal</span>
+              </div>
+            </div>
+            <div class="ramo" id="biofisica_aplicada" onclick="aprobar('biofisica_aplicada')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Biofísica Aplicada a la Práctica Odontológica</span>
+              </div>
+            </div>
+            <div class="ramo" id="clinica" onclick="aprobar('clinica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Inserción Temprana en la Clínica</span>
+              </div>
+            </div>
+            <div class="ramo" id="diagnostico" onclick="aprobar('diagnostico')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Diagnóstico por Imágenes con Radiofísica Sanitaria</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 3° Año -->
+          <div class="semestre" id="sem3">
+            <div class="semestre-header">
+              <h2><i class="fas fa-3"></i> Tercer Año</h2>
+            </div>
+
+            <!-- Materias Anuales -->
+            <div class="ramo" id="fisiologia" onclick="aprobar('fisiologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Fisiología</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo A -->
+            <div class="ramo" id="patologia_general" onclick="aprobar('patologia_general')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Patología General</span>
+              </div>
+            </div>
+            <div class="ramo" id="materiales1" onclick="aprobar('materiales1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Materiales Dentales I</span>
+              </div>
+            </div>
+            <div class="ramo" id="preclinica1" onclick="aprobar('preclinica1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Preclínica de Odontología Restauradora I</span>
+              </div>
+            </div>
+            <div class="ramo" id="preventiva1" onclick="aprobar('preventiva1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Preventiva y Mínimamente Invasiva I</span>
+              </div>
+            </div>
+            <div class="ramo" id="preclinica_quirurgica" onclick="aprobar('preclinica_quirurgica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Preclínica Quirúrgica y Anestesia</span>
+              </div>
+            </div>
+            <div class="ramo" id="microbiologia2" onclick="aprobar('microbiologia2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Microbiología II</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo B -->
+            <div class="ramo" id="preventiva2" onclick="aprobar('preventiva2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Preventiva y Mínimamente Invasiva II</span>
+              </div>
+            </div>
+            <div class="ramo" id="preclinica2" onclick="aprobar('preclinica2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Preclínica de Odontología Restauradora II</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="endodoncia1" onclick="aprobar('endodoncia1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Endodoncia I</span>
+              </div>
+            </div>
+            <div class="ramo" id="patologia_bucal" onclick="aprobar('patologia_bucal')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Patología Bucal</span>
+              </div>
+            </div>
+            <div class="ramo" id="materiales2" onclick="aprobar('materiales2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Materiales Dentales II</span>
+              </div>
+            </div>
+            <div class="ramo" id="bioetica" onclick="aprobar('bioetica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Bioética y Ejercicio Profesional</span>
+              </div>
+            </div>
+            <div class="ramo" id="periodoncia" onclick="aprobar('periodoncia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Introducción a la Periodoncia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4° Año -->
+          <div class="semestre" id="sem4">
+            <div class="semestre-header">
+              <h2><i class="fas fa-4"></i> Cuarto Año</h2>
+            </div>
+
+            <div class="ramo" id="preclinica_protesica" onclick="aprobar('preclinica_protesica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Preclínica de Rehabilitación Protética</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="farmacologia" onclick="aprobar('farmacologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Farmacología</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="medicina_interna" onclick="aprobar('medicina_interna')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Medicina Interna en la Práctica Odontológica</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="endodoncia2" onclick="aprobar('endodoncia2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Endodoncia II</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="periodoncia" onclick="aprobar('periodoncia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Periodoncia</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="restauradora" onclick="aprobar('restauradora')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Restauradora</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="bioestadistica" onclick="aprobar('bioestadistica')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Bioestadística y Metodología de la Investigación</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="historia" onclick="aprobar('historia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Historia de la Odontología</span>
+              </div>
+            </div>
+
+            <div class="ramo" id="cirugia1" onclick="aprobar('cirugia1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Cirugía y Traumatología Bucomaxilofacial I</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5° Año -->
+          <div class="semestre" id="sem5">
+            <div class="semestre-header">
+              <h2><i class="fas fa-5"></i> Quinto Año</h2>
+            </div>
+
+            <!-- Materias Anuales -->
+            <div class="ramo" id="rehabilitadora" onclick="aprobar('rehabilitadora')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Rehabilitadora Integral</span>
+              </div>
+            </div>
+            <div class="ramo" id="cirugia2" onclick="aprobar('cirugia2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Cirugía y Traumatología Bucomáxilofacial II</span>
+              </div>
+            </div>
+            <div class="ramo" id="integral_ninos" onclick="aprobar('integral_ninos')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Integral de Niños y Adolescentes</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo A -->
+            <div class="ramo" id="materiales3" onclick="aprobar('materiales3')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Materiales Dentales III</span>
+              </div>
+            </div>
+            <div class="ramo" id="imagenes2" onclick="aprobar('imagenes2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Diagnóstico por Imágenes II</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo B -->
+            <div class="ramo" id="medicina_bucal" onclick="aprobar('medicina_bucal')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Medicina Bucal I</span>
+              </div>
+            </div>
+            <div class="ramo" id="epidemiologia" onclick="aprobar('epidemiologia')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Epidemiología y Salud de las Poblaciones</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6° Año -->
+          <div class="semestre" id="sem6">
+            <div class="semestre-header">
+              <h2><i class="fas fa-6"></i> Sexto Año</h2>
+            </div>
+
+            <!-- Materias Anuales -->
+            <div class="ramo" id="integral_adultos" onclick="aprobar('integral_adultos')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Integral Adultos (PPS)</span>
+              </div>
+            </div>
+            <div class="ramo" id="cirugia3" onclick="aprobar('cirugia3')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Cirugía y Traumatología Bucomáxilofacial III</span>
+              </div>
+            </div>
+            <div class="ramo" id="docencia_servicio" onclick="aprobar('docencia_servicio')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Articulación Docencia-Servicios-Investigación (Práctica Social
+                  Educativa)</span>
+              </div>
+            </div>
+            <div class="ramo" id="integral_mayores" onclick="aprobar('integral_mayores')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Integral para el Adulto Mayor</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo A -->
+            <div class="ramo" id="ortodoncia1" onclick="aprobar('ortodoncia1')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Ortodoncia I</span>
+              </div>
+            </div>
+            <div class="ramo" id="medicina_bucal2" onclick="aprobar('medicina_bucal2')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Medicina Bucal II</span>
+              </div>
+            </div>
+            <div class="ramo" id="forense" onclick="aprobar('forense')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Odontología Forense</span>
+              </div>
+            </div>
+
+            <!-- Materias del Ciclo B -->
+            <div class="ramo" id="sistema_gestion" onclick="aprobar('sistema_gestion')">
+              <div class="ramo-content">
+                <span class="ramo-nombre">Sistema de Salud y Gestión Clínica</span>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
       </div>
-      <div class="ramo bloqueado" id="biologia_bucal" onclick="aprobar('biologia_bucal')"> Biología Bucal<br>
-      </div>
-      <div class="ramo bloqueado" id="biofisica_aplicada" onclick="aprobar('biofisica_aplicada')"> Biofísica Aplicada a
-        la Práctica Odontológica<br> </div>
-      <div class="ramo bloqueado" id="clinica" onclick="aprobar('clinica')"> Inserción Temprana en la Clínica <br></div>
-      <div class="ramo bloqueado" id="diagnostico" onclick="aprobar('diagnostico')"> Diagnóstico por Imágenes con
-        Radiofísica Sanitaria<br> </div>
-    </div>
+    </main>
 
-
-    <div class="semestre" id="sem3">
-      <h2>3° Año</h2>
-
-      <!-- Materias Anuales -->
-      <div class="ramo bloqueado" id="fisiologia" onclick="aprobar('fisiologia')">Fisiología</div>
-
-      <!-- Materias del Ciclo A -->
-      <div class="ramo bloqueado" id="patologia_general" onclick="aprobar('patologia_general')">Patología General</div>
-      <div class="ramo bloqueado" id="materiales1" onclick="aprobar('materiales1')">Materiales Dentales I</div>
-      <div class="ramo bloqueado" id="preclinica1" onclick="aprobar('preclinica1')">Preclínica de Odontología
-        Restauradora I</div>
-      <div class="ramo bloqueado" id="preventiva1" onclick="aprobar('preventiva1')">Odontología Preventiva y Mínimamente
-        Invasiva I</div>
-      <div class="ramo bloqueado" id="preclinica_quirurgica" onclick="aprobar('preclinica_quirurgica')">Preclínica
-        Quirúrgica y Anestesia</div>
-      <div class="ramo bloqueado" id="microbiologia2" onclick="aprobar('microbiologia2')">Microbiología II</div>
-
-      <!-- Materias del Ciclo B -->
-      <div class="ramo bloqueado" id="preventiva2" onclick="aprobar('preventiva2')">Odontología Preventiva y Mínimamente
-        Invasiva II</div>
-      <div class="ramo bloqueado" id="preclinica2" onclick="aprobar('preclinica2')">Preclínica de Odontología
-        Restauradora II</div>
-      <div class="ramo bloqueado" id="endodoncia1" onclick="aprobar('endodoncia1')">Endodoncia I</div>
-      <div class="ramo bloqueado" id="patologia_bucal" onclick="aprobar('patologia_bucal')">Patología Bucal</div>
-      <div class="ramo bloqueado" id="materiales2" onclick="aprobar('materiales2')">Materiales Dentales II</div>
-      <div class="ramo bloqueado" id="bioetica" onclick="aprobar('bioetica')">Bioética y Ejercicio Profesional</div>
-      <div class="ramo bloqueado" id="periodoncia" onclick="aprobar('periodoncia')">Introducción a la Periodoncia</div>
-    </div>
-
-
-    <div class="semestre" id="sem4">
-      <h2>4° Año</h2>
-
-      <!-- Materias Anuales -->
-      <div class="ramo bloqueado" id="preclinica_protesica" onclick="aprobar('preclinica_protesica')">Preclínica de
-        Rehabilitación Protética</div>
-      <div class="ramo bloqueado" id="farmacologia" onclick="aprobar('farmacologia')">Farmacología</div>
-      <div class="ramo bloqueado" id="medicina_interna" onclick="aprobar('medicina_interna')">Medicina Interna en la
-        Práctica Odontológica</div>
-      <div class="ramo bloqueado" id="endodoncia2" onclick="aprobar('endodoncia2')">Endodoncia II</div>
-      <div class="ramo bloqueado" id="periodoncia" onclick="aprobar('periodoncia')">Periodoncia</div>
-      <div class="ramo bloqueado" id="restauradora" onclick="aprobar('restauradora')">Odontología Restauradora</div>
-      <div class="ramo bloqueado" id="bioestadistica" onclick="aprobar('bioestadistica')">Bioestadística y Metodología
-        de la Investigación</div>
-      <div class="ramo bloqueado" id="historia" onclick="aprobar('historia')">Historia de la Odontología</div>
-      <div class="ramo bloqueado" id="cirugia1" onclick="aprobar('cirugia1')">Cirugía y Traumatología Bucomaxilofacial I
+    <div class="modal" id="infoModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle">Información de la Materia</h3>
+        <div id="modalBody">
+          <p>Información detallada sobre la materia aparecerá aquí.</p>
+        </div>
       </div>
     </div>
+  </div>
 
-
-    <div class="semestre" id="sem5">
-      <h2>5° Año</h2>
-
-      <!-- Materias Anuales -->
-      <div class="ramo bloqueado" id="rehabilitadora" onclick="aprobar('rehabilitadora')">Odontología Rehabilitadora
-        Integral</div>
-      <div class="ramo bloqueado" id="cirugia2" onclick="aprobar('cirugia2')">Cirugía y Traumatología Bucomáxilofacial
-        II</div>
-      <div class="ramo bloqueado" id="integral_ninos" onclick="aprobar('integral_ninos')">Odontología Integral de Niños
-        y Adolescentes</div>
-
-      <!-- Materias del Ciclo A -->
-      <div class="ramo bloqueado" id="materiales3" onclick="aprobar('materiales3')">Materiales Dentales III</div>
-      <div class="ramo bloqueado" id="imagenes2" onclick="aprobar('imagenes2')">Diagnóstico por Imágenes II</div>
-
-      <!-- Materias del Ciclo B -->
-      <div class="ramo bloqueado" id="medicina_bucal" onclick="aprobar('medicina_bucal')">Medicina Bucal I</div>
-      <div class="ramo bloqueado" id="epidemiologia" onclick="aprobar('epidemiologia')">Epidemiología y Salud de las
-        Poblaciones</div>
-    </div>
-
-
-    <div class="semestre" id="sem6">
-      <h2>6° Año</h2>
-
-      <!-- Materias Anuales -->
-      <div class="ramo bloqueado" id="integral_adultos" onclick="aprobar('integral_adultos')">Odontología Integral
-        Adultos (PPS)</div>
-      <div class="ramo bloqueado" id="cirugia3" onclick="aprobar('cirugia3')">Cirugía y Traumatología Bucomáxilofacial
-        III</div>
-      <div class="ramo bloqueado" id="docencia_servicio" onclick="aprobar('docencia_servicio')">Articulación
-        Docencia-Servicios-Investigación (Práctica Social Educativa)</div>
-      <div class="ramo bloqueado" id="integral_mayores" onclick="aprobar('integral_mayores')">Odontología Integral para
-        el Adulto Mayor</div>
-
-      <!-- Materias del Ciclo A -->
-      <div class="ramo bloqueado" id="ortodoncia1" onclick="aprobar('ortodoncia1')">Ortodoncia I</div>
-      <div class="ramo bloqueado" id="medicina_bucal2" onclick="aprobar('medicina_bucal2')">Medicina Bucal II</div>
-      <div class="ramo bloqueado" id="forense" onclick="aprobar('forense')">Odontología Forense</div>
-
-      <!-- Materias del Ciclo B -->
-      <div class="ramo bloqueado" id="sistema_gestion" onclick="aprobar('sistema_gestion')">Sistema de Salud y Gestión
-        Clínica</div>
-    </div>
-
-    <script src="script.js"></script>
-
-    <style>
-      h1 {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        color: #c2185b;
-        text-align: center;
-        margin-bottom: 40px;
-      }
-    </style>
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,71 @@
+// Funciones para guardar y cargar progreso en localStorage
+function obtenerAprobados() {
+  const data = localStorage.getItem('mallaAprobados');
+  return data ? JSON.parse(data) : [];
+}
 
+function guardarAprobados(aprobados) {
+  localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
+  actualizarProgreso();
+}
+
+// Función para aprobar/desaprobar una materia
+function aprobar(materiaId) {
+  const elemento = document.getElementById(materiaId);
+
+  if (!elemento || elemento.classList.contains('bloqueado')) {
+    return;
+  }
+
+  const aprobados = obtenerAprobados();
+  const index = aprobados.indexOf(materiaId);
+
+  if (index === -1) {
+    // Agregar sonido o feedback táctil aquí si se desea
+    aprobados.push(materiaId);
+    elemento.classList.add('aprobado');
+  } else {
+    aprobados.splice(index, 1);
+    elemento.classList.remove('aprobado');
+  }
+
+  guardarAprobados(aprobados);
+  actualizarDesbloqueos();
+}
+
+// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos
+function actualizarDesbloqueos() {
+  const aprobados = obtenerAprobados();
+
+  for (const [destino, reqs] of Object.entries(prerequisitos)) {
+    const elem = document.getElementById(destino);
+    if (!elem) continue;
+
+    const puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+
+    if (!elem.classList.contains('aprobado')) {
+      if (puedeDesbloquear) {
+        elem.classList.remove('bloqueado');
+      } else {
+        elem.classList.add('bloqueado');
+      }
+    } else {
+      elem.classList.remove('bloqueado');
+    }
+  }
+}
+
+// Actualizar barra de progreso
+function actualizarProgreso() {
+  const aprobados = obtenerAprobados();
+  const totalMaterias = document.querySelectorAll('.ramo').length;
+  const porcentaje = Math.round((aprobados.length / totalMaterias) * 100);
+
+  document.getElementById('progressFill').style.width = `${porcentaje}%`;
+  document.getElementById('progressText').textContent = `${porcentaje}% completado`;
+}
+
+// Prerrequisitos de cada ramo
 // Prerrequisitos de cada ramo (ramos que deben estar aprobados para desbloquear este)
 const prerequisitos = {
   // 2° año
@@ -61,72 +128,36 @@ const prerequisitos = {
   'sistema_gestion': ['epidemiologia', 'forense']
 };
 
-// Funciones para guardar y cargar progreso en localStorage
-function obtenerAprobados() {
-  const data = localStorage.getItem('mallaAprobados');
-  return data ? JSON.parse(data) : [];
-}
 
-function guardarAprobados(aprobados) {
-  localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
-}
-
-// Función para aprobar/desaprobar una materia
-function aprobar(materiaId) {
-  const aprobados = obtenerAprobados();
-  const elemento = document.getElementById(materiaId);
-
-  if (!elemento) return;
-
-  // Verificar si la materia ya está aprobada
-  const index = aprobados.indexOf(materiaId);
-
-  if (index === -1) {
-    // Si no está aprobada, verificar si puede aprobarse (no bloqueada)
-    if (!elemento.classList.contains('bloqueado')) {
-      aprobados.push(materiaId);
-      elemento.classList.add('aprobado');
-    } else {
-      alert('No puedes aprobar esta materia hasta completar los prerrequisitos necesarios.');
-      return;
-    }
-  } else {
-    // Si ya está aprobada, quitarla de aprobados
-    aprobados.splice(index, 1);
-    elemento.classList.remove('aprobado');
-  }
-
-  guardarAprobados(aprobados);
-  actualizarDesbloqueos();
-}
-
-// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos
-function actualizarDesbloqueos() {
-  const aprobados = obtenerAprobados();
-
-  for (const [destino, reqs] of Object.entries(prerequisitos)) {
-    const elem = document.getElementById(destino);
-    if (!elem) continue;
-
-    // Verificar si todos los prerrequisitos están aprobados
-    let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
-
-    if (!elem.classList.contains('aprobado')) {
-      if (puedeDesbloquear) {
-        elem.classList.remove('bloqueado');
-      } else {
-        elem.classList.add('bloqueado');
-      }
-    } else {
-      elem.classList.remove('bloqueado');
-    }
-  }
-}
-
-
-// Inicializar la malla al cargar la página
+// Navegación horizontal con botones
 document.addEventListener('DOMContentLoaded', function () {
-  // Cargar materias aprobadas
+  const mallaGrid = document.getElementById('mallaGrid');
+  const scrollLeftBtn = document.getElementById('scrollLeft');
+  const scrollRightBtn = document.getElementById('scrollRight');
+  const btnReset = document.getElementById('btnReset');
+
+  // Botones de navegación horizontal
+  scrollLeftBtn.addEventListener('click', () => {
+    mallaGrid.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+
+  scrollRightBtn.addEventListener('click', () => {
+    mallaGrid.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+
+  // Reiniciar progreso
+  btnReset.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que quieres reiniciar todo tu progreso?')) {
+      localStorage.removeItem('mallaAprobados');
+      document.querySelectorAll('.ramo').forEach(ramo => {
+        ramo.classList.remove('aprobado');
+      });
+      actualizarDesbloqueos();
+      actualizarProgreso();
+    }
+  });
+
+  // Inicializar
   const aprobados = obtenerAprobados();
   aprobados.forEach(materiaId => {
     const elemento = document.getElementById(materiaId);
@@ -135,6 +166,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Actualizar desbloqueos
   actualizarDesbloqueos();
+  actualizarProgreso();
+
+  // // Efectos de scroll suave para navegación con rueda del ratón
+  // mallaGrid.addEventListener('wheel', (e) => {
+  //   if (e.deltaY !== 0) {
+  //     e.preventDefault();
+  //     mallaGrid.scrollLeft += e.deltaY;
+  //   }
+  // });
 });
+
+
